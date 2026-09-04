@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>预测 · 青城清气</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="data-banner"><span class="data-banner__tag">DEMO</span><span>占位估计 · 非 ML 模型</span></div>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand__mark"></span><span class="brand__text"><strong>青城清气</strong><small>公开演示站</small></span></a>
+    <nav class="nav">
+      <a href="index.html">总览</a>
+      <a href="monitor.html">空气质量</a>
+      <a href="map.html">城市地图</a>
+      <a href="prediction.html" class="is-active">预测</a>
+      <a href="data-source.html">数据来源</a>
+    </nav>
+  </header>
+  <main class="page">
+    <section class="page-intro">
+      <h1>PM2.5 预测</h1>
+      <p>正式机器学习模型在源码仓库 Phase 5。此处为公开演示占位曲线。</p>
+    </section>
+    <div class="placeholder-panel">
+      <div id="pred-placeholder" class="chart-box" style="min-height:280px"></div>
+    </div>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/prediction.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      QingchengPrediction.renderPlaceholder("pred-placeholder");
+    });
+  </script>
+</body>
+</html>

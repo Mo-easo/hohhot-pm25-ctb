@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "data": {
+    "status": "healthy",
+    "phase": "1",
+    "stations": 6,
+    "air_quality_rows": "see data_range",
+    "hosting": "GitHub Pages (static DEMO)"
+  }
+}

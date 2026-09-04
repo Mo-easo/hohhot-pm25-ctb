@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "data": {
+    "data_mode": "DEMO",
+    "data_mode_label": "DEMO DATA — 演示数据（非实时，仅用于系统联调）",
+    "disclaimer": "DEMO DATA — 演示数据，非实时监测值，仅用于 Phase 1 系统联调。",
+    "generated_at": "2026-09-04T20:44:42",
+    "is_realtime": false,
+    "data_range": {
+      "start_time": "2026-08-06 00:00:00",
+      "end_time": "2026-09-04 20:00:00",
+      "total_rows": 4302,
+      "station_count": 6,
+      "data_mode": "DEMO"
+    },
+    "schema_version": "1.0.0-phase1",
+    "city": "呼和浩特",
+    "project": "青城清气",
+    "center": {
+      "lat": 40.8421,
+      "lng": 111.749,
+      "zoom": 11
+    }
+  }
+}

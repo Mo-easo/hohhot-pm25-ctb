@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "station_id": "HHHT001",
+      "station_name": "呼和浩特市环境监测中心站",
+      "latitude": 40.8421,
+      "longitude": 111.749,
+      "district": "新城区"
+    },
+    {
+      "station_id": "HHHT002",
+      "station_name": "如意开发区",
+      "latitude": 40.825,
+      "longitude": 111.8,
+      "district": "赛罕区"
+    },
+    {
+      "station_id": "HHHT003",
+      "station_name": "呼市一监",
+      "latitude": 40.81,
+      "longitude": 111.67,
+      "district": "回民区"
+    },
+    {
+      "station_id": "HHHT004",
+      "station_name": "小召前街",
+      "latitude": 40.805,
+      "longitude": 111.665,
+      "district": "回民区"
+    },
+    {
+      "station_id": "HHHT005",
+      "station_name": "二十九中",
+      "latitude": 40.78,
+      "longitude": 111.7,
+      "district": "玉泉区"
+    },
+    {
+      "station_id": "HHHT006",
+      "station_name": "工大金川校区",
+      "latitude": 40.76,
+      "longitude": 111.62,
+      "district": "土默特左旗"
+    }
+  ],
+  "banner": {
+    "data_mode": "DEMO",
+    "data_mode_label": "DEMO DATA — 演示数据（非实时，仅用于系统联调）",
+    "disclaimer": "DEMO DATA — 演示数据，非实时监测值，仅用于 Phase 1 系统联调。",
+    "generated_at": "2026-09-04T20:44:42",
+    "is_realtime": false
+  }
+}

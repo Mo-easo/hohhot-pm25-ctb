@@ -1,0 +1,190 @@
+{
+  "ok": true,
+  "data": {
+    "method": "placeholder_diurnal_blend",
+    "note": "静态演示站占位风险估计，非机器学习预测。",
+    "bands": {
+      "h6": "低风险",
+      "h12": "低风险",
+      "h18": "低风险",
+      "h24": "低风险"
+    },
+    "hourly": [
+      {
+        "hour_ahead": 1,
+        "pm25_estimate": 56.3,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 2,
+        "pm25_estimate": 52.3,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 3,
+        "pm25_estimate": 52.6,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 4,
+        "pm25_estimate": 52.9,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 5,
+        "pm25_estimate": 50.8,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 6,
+        "pm25_estimate": 53.2,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 7,
+        "pm25_estimate": 52.1,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 8,
+        "pm25_estimate": 51.4,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 9,
+        "pm25_estimate": 52.1,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 10,
+        "pm25_estimate": 51.8,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 11,
+        "pm25_estimate": 54.9,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 12,
+        "pm25_estimate": 53.6,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 13,
+        "pm25_estimate": 54.5,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 14,
+        "pm25_estimate": 56.7,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 15,
+        "pm25_estimate": 53.5,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 16,
+        "pm25_estimate": 53.1,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 17,
+        "pm25_estimate": 53.4,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 18,
+        "pm25_estimate": 53.0,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 19,
+        "pm25_estimate": 54.3,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 20,
+        "pm25_estimate": 54.4,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 21,
+        "pm25_estimate": 53.4,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 22,
+        "pm25_estimate": 53.6,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 23,
+        "pm25_estimate": 57.5,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      },
+      {
+        "hour_ahead": 24,
+        "pm25_estimate": 56.6,
+        "level": "良",
+        "risk": "低风险",
+        "color": "#8BC34A"
+      }
+    ]
+  },
+  "banner": {
+    "data_mode": "DEMO",
+    "data_mode_label": "DEMO DATA — 演示数据（非实时，仅用于系统联调）",
+    "disclaimer": "DEMO DATA — 演示数据，非实时监测值，仅用于 Phase 1 系统联调。",
+    "generated_at": "2026-09-04T20:44:42",
+    "is_realtime": false
+  }
+}

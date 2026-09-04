@@ -103,6 +103,12 @@ python app.py
 
 浏览器访问：<http://127.0.0.1:5000>
 
+### 公开演示站（手机可直接打开，长期稳定）
+
+**https://mo-easo.github.io/hohhot-pm25-ctb/**
+
+由 GitHub Pages 托管 `docs/` 静态站，任何人可访问（DEMO 数据）。
+
 运行测试：
 
 ```bash

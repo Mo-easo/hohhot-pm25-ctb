@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>数据来源 · 青城清气</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="data-banner"><span class="data-banner__tag">DEMO</span><span>禁止伪造实时数据</span></div>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand__mark"></span><span class="brand__text"><strong>青城清气</strong><small>公开演示站</small></span></a>
+    <nav class="nav">
+      <a href="index.html">总览</a>
+      <a href="data-source.html" class="is-active">数据来源</a>
+      <a href="https://github.com/Mo-easo/hohhot-pm25-ctb">源码</a>
+    </nav>
+  </header>
+  <main class="page">
+    <section class="page-intro">
+      <h1>Data Source · 数据来源</h1>
+      <p>本公开站托管于 GitHub Pages，数据为 DEMO，非实时监测。</p>
+    </section>
+    <section class="source-grid" id="source-grid">
+      <article class="chart-card">
+        <h2>托管方式</h2>
+        <p>GitHub Pages（长期公开、HTTPS、手机可直接打开）</p>
+        <p>源码：<a href="https://github.com/Mo-easo/hohhot-pm25-ctb">Mo-easo/hohhot-pm25-ctb</a></p>
+      </article>
+      <article class="chart-card" id="meta-card">
+        <h2>数据范围</h2>
+        <p>加载中…</p>
+      </article>
+    </section>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const json = await Qingcheng.getJSON("meta");
+      const r = json.data.data_range || {};
+      document.getElementById("meta-card").innerHTML = `
+        <h2>数据范围</h2>
+        <ul>
+          <li>模式：${json.data.data_mode}</li>
+          <li>起始：${r.start_time || "—"}</li>
+          <li>结束：${r.end_time || "—"}</li>
+          <li>记录数：${r.total_rows || 0}</li>
+          <li>站点数：${r.station_count || 0}</li>
+        </ul>
+        <p>${json.data.disclaimer || ""}</p>`;
+    });
+  </script>
+</body>
+</html>

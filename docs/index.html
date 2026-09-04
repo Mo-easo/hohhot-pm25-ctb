@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="青城清气 — 呼和浩特 PM2.5 智能监测与预测平台（公开演示站）" />
+  <title>青城清气 · 呼和浩特 PM2.5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/map.css" />
+</head>
+<body>
+  <div class="data-banner" id="live-banner" role="status">
+    <span class="data-banner__tag">DEMO</span>
+    <span>加载数据说明…</span>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">
+        <strong>青城清气</strong>
+        <small>呼和浩特城市 PM2.5 智能监测与预测平台</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" class="is-active">总览</a>
+      <a href="monitor.html">空气质量</a>
+      <a href="map.html">城市地图</a>
+      <a href="prediction.html">预测</a>
+      <a href="research.html">研究成果</a>
+      <a href="data-source.html">数据来源</a>
+    </nav>
+    <span class="phase-chip">公开演示站</span>
+  </header>
+
+  <main class="page page--home">
+    <section class="hero-panel" aria-labelledby="hero-brand">
+      <div class="hero-panel__atmosphere" aria-hidden="true"></div>
+      <div class="hero-panel__grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Hohhot · Environmental Health · CTB</p>
+          <h1 id="hero-brand">青城清气</h1>
+          <p class="lede">呼和浩特城市 PM2.5 智能监测与预测平台</p>
+          <p class="hero-note">本页为 GitHub Pages 长期公开演示站，使用 DEMO 数据，任何人可用手机或电脑访问。完整 Flask 源码见 GitHub 仓库。</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="map.html">打开城市地图</a>
+            <a class="btn btn--ghost" href="https://github.com/Mo-easo/hohhot-pm25-ctb" target="_blank" rel="noopener">GitHub 源码</a>
+          </div>
+        </div>
+        <div class="metric-strip" id="metric-strip" aria-live="polite">
+          <article class="metric metric--focus">
+            <span class="metric__label">PM2.5</span>
+            <strong class="metric__value" data-field="PM25">--</strong>
+            <span class="metric__unit">µg/m³</span>
+            <span class="metric__level" data-field="level">--</span>
+          </article>
+          <article class="metric"><span class="metric__label">AQI</span><strong class="metric__value" data-field="AQI">--</strong></article>
+          <article class="metric"><span class="metric__label">PM10</span><strong class="metric__value" data-field="PM10">--</strong><span class="metric__unit">µg/m³</span></article>
+          <article class="metric"><span class="metric__label">NO₂</span><strong class="metric__value" data-field="NO2">--</strong><span class="metric__unit">µg/m³</span></article>
+          <article class="metric"><span class="metric__label">O₃</span><strong class="metric__value" data-field="O3">--</strong><span class="metric__unit">µg/m³</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-main">
+      <div class="map-stage">
+        <div class="panel-head">
+          <h2>呼和浩特监测站点</h2>
+          <span class="hint" id="snapshot-time">加载中…</span>
+        </div>
+        <div id="home-map" class="map-canvas" role="img" aria-label="呼和浩特监测站点地图"></div>
+      </div>
+      <aside class="risk-rail">
+        <div class="panel-head">
+          <h2>未来 24 小时污染风险</h2>
+          <span class="badge badge--warn">占位估计</span>
+        </div>
+        <p class="rail-note">静态演示站占位风险，<strong>非机器学习预测</strong>。</p>
+        <ul class="risk-list" id="risk-list">
+          <li><span>未来 6 小时</span><strong data-band="h6">--</strong></li>
+          <li><span>未来 12 小时</span><strong data-band="h12">--</strong></li>
+          <li><span>未来 18 小时</span><strong data-band="h18">--</strong></li>
+          <li><span>未来 24 小时</span><strong data-band="h24">--</strong></li>
+        </ul>
+        <a class="text-link" href="prediction.html">了解预测说明 →</a>
+      </aside>
+    </section>
+
+    <section class="home-bottom">
+      <div class="chart-card">
+        <div class="panel-head"><h2>今日趋势（近 24h）</h2></div>
+        <div id="chart-24h" class="chart-box"></div>
+      </div>
+      <div class="chart-card">
+        <div class="panel-head"><h2>7 日趋势</h2></div>
+        <div id="chart-7d" class="chart-box"></div>
+      </div>
+      <div class="info-card">
+        <div class="panel-head"><h2>研究闭环</h2></div>
+        <ol class="pipeline">
+          <li>监测</li><li>分析</li><li>预测</li><li>干预</li><li>评估</li>
+        </ol>
+        <p class="muted">面向 RQ1–RQ7：时间规律 · 气象相关 · 空间差异 · 24h 预测 · 高风险识别 · 干预建议。</p>
+        <div class="panel-head" style="margin-top:1.25rem"><h2>系统状态</h2></div>
+        <ul class="status-list" id="status-list"><li>加载中</li></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>青城清气 · CTB 环境健康 · GitHub Pages 公开演示</p>
+    <p class="muted">Correlation does not imply causation. DEMO 数据非实时。</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/prediction.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.QingchengHome) window.QingchengHome.init();
+    });
+  </script>
+</body>
+</html>
