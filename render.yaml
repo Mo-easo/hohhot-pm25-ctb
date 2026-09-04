@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: hohhot-pm25-ctb
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -b 0.0.0.0:$PORT app:app
+    envVars:
+      - key: HOHHOT_DEBUG
+        value: "0"
+      - key: HOHHOT_DATA_MODE
+        value: DEMO
+      - key: PYTHON_VERSION
+        value: "3.12.0"
