@@ -3,12 +3,16 @@ services:
     name: hohhot-pm25-ctb
     runtime: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn -b 0.0.0.0:$PORT app:app
+    region: singapore
+    buildCommand: pip install -r requirements-prod.txt
+    startCommand: gunicorn -b 0.0.0.0:$PORT --workers 2 --timeout 120 app:app
+    healthCheckPath: /api/health
     envVars:
       - key: HOHHOT_DEBUG
         value: "0"
       - key: HOHHOT_DATA_MODE
         value: DEMO
+      - key: HOHHOT_SECRET_KEY
+        generateValue: true
       - key: PYTHON_VERSION
-        value: "3.12.0"
+        value: "3.12.7"
