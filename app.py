@@ -320,11 +320,6 @@ bootstrap()
 
 
 if __name__ == "__main__":
-    logger.info("Starting 青城清气 Phase 1 on %s:%s", config.HOST, config.PORT)
-    # Windows + Flask debug reloader can hit WinError 10038; keep debug, disable reloader.
-    app.run(
-        host=config.HOST,
-        port=config.PORT,
-        debug=config.DEBUG,
-        use_reloader=False,
-    )
+    logger.info("Starting 青城清气 Phase 1 on 0.0.0.0:5000 (LAN accessible)")
+    # use_reloader=False: Windows debug reloader can hit WinError 10038
+    app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=False)
