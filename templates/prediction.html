@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}预测{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <h1>PM2.5 预测</h1>
+  <p>Phase 5 将训练 Linear / RF / GBM（及可选 XGBoost），使用 TimeSeriesSplit，报告 MAE / RMSE / R² 与不确定性说明。</p>
+</section>
+<div class="placeholder-panel">
+  <h2>当前状态</h2>
+  <p>首页「未来 24 小时污染风险」仅为 <strong>Phase 1 占位估计</strong>，不是机器学习预测，不可用于决策。</p>
+  <div id="pred-placeholder" class="chart-box" style="min-height:280px"></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.QingchengPrediction) window.QingchengPrediction.renderPlaceholder("pred-placeholder");
+});
+</script>
+{% endblock %}

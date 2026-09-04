@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}空气质量{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <h1>空气质量监测</h1>
+  <p>城市与各站点最新读数。当前数据模式见顶部横幅（DEMO / SIMULATED / REAL）。</p>
+</section>
+<section class="simple-grid">
+  <div class="chart-card">
+    <div class="panel-head"><h2>城市快照</h2></div>
+    <div id="monitor-metrics" class="metric-strip metric-strip--compact"></div>
+  </div>
+  <div class="chart-card">
+    <div class="panel-head"><h2>站点列表</h2></div>
+    <div class="table-wrap">
+      <table id="station-table">
+        <thead>
+          <tr>
+            <th>站点</th><th>城区</th><th>PM2.5</th><th>等级</th><th>时间</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const res = await fetch("/api/latest");
+  const json = await res.json();
+  if (!json.ok) {
+    document.getElementById("monitor-metrics").textContent = json.error?.message || "加载失败";
+    return;
+  }
+  const c = json.data.city;
+  document.getElementById("monitor-metrics").innerHTML = `
+    <article class="metric metric--focus"><span class="metric__label">PM2.5</span><strong class="metric__value">${c.PM25 ?? "--"}</strong><span class="metric__unit">µg/m³</span><span class="metric__level">${c.level}</span></article>
+    <article class="metric"><span class="metric__label">AQI</span><strong class="metric__value">${Math.round(c.AQI ?? 0)}</strong></article>
+    <article class="metric"><span class="metric__label">PM10</span><strong class="metric__value">${c.PM10 ?? "--"}</strong></article>
+    <article class="metric"><span class="metric__label">NO₂</span><strong class="metric__value">${c.NO2 ?? "--"}</strong></article>
+  `;
+  const tb = document.querySelector("#station-table tbody");
+  tb.innerHTML = json.data.stations.map(s => `
+    <tr>
+      <td>${s.station_name}</td>
+      <td>${s.district}</td>
+      <td style="color:${s.color};font-weight:600">${s.PM25}</td>
+      <td>${s.level}</td>
+      <td>${s.datetime}</td>
+    </tr>
+  `).join("");
+});
+</script>
+{% endblock %}

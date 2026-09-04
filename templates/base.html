@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}青城清气{% endblock %} · 呼和浩特 PM2.5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <div class="data-banner" role="status">
+    <span class="data-banner__tag">{{ banner.data_mode }}</span>
+    <span>{{ banner.data_mode_label }}</span>
+    <span class="data-banner__sep">·</span>
+    <span>{{ banner.disclaimer }}</span>
+    {% if banner.generated_at %}
+    <span class="data-banner__sep">·</span>
+    <span>生成时间 {{ banner.generated_at }}</span>
+    {% endif %}
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">
+        <strong>青城清气</strong>
+        <small>呼和浩特城市 PM2.5 智能监测与预测平台</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}is-active{% endif %}">总览</a>
+      <a href="{{ url_for('monitor') }}" class="{% if request.endpoint == 'monitor' %}is-active{% endif %}">空气质量</a>
+      <a href="{{ url_for('map_page') }}" class="{% if request.endpoint == 'map_page' %}is-active{% endif %}">城市地图</a>
+      <a href="{{ url_for('prediction_page') }}" class="{% if request.endpoint == 'prediction_page' %}is-active{% endif %}">预测</a>
+      <a href="{{ url_for('analysis_page') }}" class="{% if request.endpoint == 'analysis_page' %}is-active{% endif %}">数据分析</a>
+      <a href="{{ url_for('research_page') }}" class="{% if request.endpoint == 'research_page' %}is-active{% endif %}">研究成果</a>
+      <a href="{{ url_for('about_page') }}" class="{% if request.endpoint == 'about_page' %}is-active{% endif %}">项目行动</a>
+      <a href="{{ url_for('data_source_page') }}">数据来源</a>
+    </nav>
+    <span class="phase-chip">{{ phase }}</span>
+  </header>
+
+  <main class="{% block main_class %}page{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>青城清气 · CTB 环境健康方向研究型项目 · 监测—分析—预测—干预—评估闭环</p>
+    <p class="muted">Correlation does not imply causation. 预测结果含不确定性，不得视为绝对准确。</p>
+  </footer>
+
+  <script>
+    window.QINGCHENG = {
+      center: {{ center | default({'lat': 40.8421, 'lng': 111.7490, 'zoom': 11}) | tojson }},
+      banner: {{ banner | tojson }}
+    };
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

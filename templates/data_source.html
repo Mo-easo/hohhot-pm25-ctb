@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}数据来源{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <h1>Data Source · 数据来源</h1>
+  <p>所有图表应可追溯至此处声明。禁止伪造实时数据、实验结果或调查影响。</p>
+</section>
+<section class="source-grid">
+  <article class="chart-card">
+    <h2>当前数据模式</h2>
+    <p><strong>{{ banner.data_mode }}</strong> — {{ banner.data_mode_label }}</p>
+    <p>{{ banner.disclaimer }}</p>
+    <p>生成时间：{{ banner.generated_at or "—" }}</p>
+    <p>是否实时：<strong>否</strong></p>
+  </article>
+  <article class="chart-card">
+    <h2>库内时间范围</h2>
+    <ul>
+      <li>起始：{{ data_range.start_time or "—" }}</li>
+      <li>结束：{{ data_range.end_time or "—" }}</li>
+      <li>记录数：{{ data_range.total_rows or 0 }}</li>
+      <li>站点数：{{ data_range.station_count or 0 }}</li>
+    </ul>
+  </article>
+  <article class="chart-card">
+    <h2>计划正式来源（Phase 2）</h2>
+    <ol>
+      <li>中国环境监测总站公开空气质量数据</li>
+      <li>内蒙古自治区生态环境厅公开数据</li>
+      <li>公开科研数据集</li>
+    </ol>
+  </article>
+  <article class="chart-card">
+    <h2>单位与字段</h2>
+    <p>PM2.5 / PM10 / SO₂ / NO₂ / O₃：µg/m³；CO：mg/m³；温度 ℃；湿度 %；风速 m/s；气压 hPa；降水 mm。</p>
+    <p>Phase 1 演示数据由 <code>scripts/generate_demo_data.py</code> 生成，写入 SQLite，并导出 CSV。</p>
+  </article>
+</section>
+{% endblock %}

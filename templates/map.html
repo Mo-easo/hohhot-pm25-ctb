@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}城市地图{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" />
+{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <h1>城市空间地图</h1>
+  <p>监测站点与 PM2.5 等级着色。Phase 4 将完善热力图与风险分区（基于站点历史估计，不作伪造行政区浓度）。</p>
+</section>
+<div class="map-stage map-stage--full">
+  <div id="full-map" class="map-canvas map-canvas--tall"></div>
+</div>
+<aside id="station-detail" class="station-detail" hidden>
+  <h2 id="detail-name">站点</h2>
+  <dl id="detail-body"></dl>
+</aside>
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.QingchengMap) {
+    window.QingchengMap.initFullMap("full-map", "station-detail");
+  }
+});
+</script>
+{% endblock %}

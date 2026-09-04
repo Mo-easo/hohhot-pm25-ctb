@@ -1,0 +1,56 @@
+.map-canvas {
+  width: 100%;
+  height: 420px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #0a161a;
+}
+
+.map-canvas--tall {
+  height: min(70vh, 640px);
+}
+
+.map-stage--full {
+  padding: 0.75rem;
+  background: rgba(22, 48, 55, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.station-marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.station-detail {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(22, 48, 55, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.station-detail dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0.5rem 0 0;
+}
+
+.station-detail dt {
+  color: var(--text-muted);
+}
+
+.leaflet-container {
+  font-family: var(--font-body);
+  background: #0a161a;
+}

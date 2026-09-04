@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}总览{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" />
+{% endblock %}
+{% block main_class %}page page--home{% endblock %}
+
+{% block content %}
+<section class="hero-panel" aria-labelledby="hero-brand">
+  <div class="hero-panel__atmosphere" aria-hidden="true"></div>
+  <div class="hero-panel__grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Hohhot · Environmental Health · CTB</p>
+      <h1 id="hero-brand">青城清气</h1>
+      <p class="lede">呼和浩特城市 PM2.5 智能监测与预测平台</p>
+      <p class="hero-note">Phase 1 已就绪：架构 · 数据库 · DEMO 数据 · API · 首页总览。真实数据接入与模型训练在后续阶段完成。</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="{{ url_for('map_page') }}">打开城市地图</a>
+        <a class="btn btn--ghost" href="{{ url_for('data_source_page') }}">查看数据来源</a>
+      </div>
+    </div>
+
+    <div class="metric-strip" id="metric-strip" aria-live="polite">
+      <article class="metric metric--focus">
+        <span class="metric__label">PM2.5</span>
+        <strong class="metric__value" data-field="PM25">--</strong>
+        <span class="metric__unit">µg/m³</span>
+        <span class="metric__level" data-field="level">--</span>
+      </article>
+      <article class="metric">
+        <span class="metric__label">AQI</span>
+        <strong class="metric__value" data-field="AQI">--</strong>
+      </article>
+      <article class="metric">
+        <span class="metric__label">PM10</span>
+        <strong class="metric__value" data-field="PM10">--</strong>
+        <span class="metric__unit">µg/m³</span>
+      </article>
+      <article class="metric">
+        <span class="metric__label">NO₂</span>
+        <strong class="metric__value" data-field="NO2">--</strong>
+        <span class="metric__unit">µg/m³</span>
+      </article>
+      <article class="metric">
+        <span class="metric__label">O₃</span>
+        <strong class="metric__value" data-field="O3">--</strong>
+        <span class="metric__unit">µg/m³</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="home-main">
+  <div class="map-stage">
+    <div class="panel-head">
+      <h2>呼和浩特监测站点</h2>
+      <span class="hint" id="snapshot-time">加载中…</span>
+    </div>
+    <div id="home-map" class="map-canvas" role="img" aria-label="呼和浩特监测站点地图"></div>
+  </div>
+
+  <aside class="risk-rail">
+    <div class="panel-head">
+      <h2>未来 24 小时污染风险</h2>
+      <span class="badge badge--warn">占位估计</span>
+    </div>
+    <p class="rail-note">以下为 Phase 1 占位风险带，<strong>非机器学习预测</strong>。正式 24h 预测见 Phase 5。</p>
+    <ul class="risk-list" id="risk-list">
+      <li><span>未来 6 小时</span><strong data-band="h6">--</strong></li>
+      <li><span>未来 12 小时</span><strong data-band="h12">--</strong></li>
+      <li><span>未来 18 小时</span><strong data-band="h18">--</strong></li>
+      <li><span>未来 24 小时</span><strong data-band="h24">--</strong></li>
+    </ul>
+    <a class="text-link" href="{{ url_for('prediction_page') }}">了解预测模块计划 →</a>
+  </aside>
+</section>
+
+<section class="home-bottom">
+  <div class="chart-card">
+    <div class="panel-head">
+      <h2>今日趋势（近 24h）</h2>
+    </div>
+    <div id="chart-24h" class="chart-box"></div>
+  </div>
+  <div class="chart-card">
+    <div class="panel-head">
+      <h2>7 日趋势</h2>
+    </div>
+    <div id="chart-7d" class="chart-box"></div>
+  </div>
+  <div class="info-card">
+    <div class="panel-head"><h2>研究闭环</h2></div>
+    <ol class="pipeline">
+      <li>监测</li><li>分析</li><li>预测</li><li>干预</li><li>评估</li>
+    </ol>
+    <p class="muted">面向 RQ1–RQ7：时间规律 · 气象相关 · 空间差异 · 24h 预测 · 高风险识别 · 干预建议。</p>
+    <div class="panel-head" style="margin-top:1.25rem"><h2>系统状态</h2></div>
+    <ul class="status-list" id="status-list">
+      <li>健康检查：加载中</li>
+    </ul>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.QingchengHome) window.QingchengHome.init();
+  });
+</script>
+{% endblock %}

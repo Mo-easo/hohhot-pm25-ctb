@@ -1,0 +1,30 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Logs & OS
+logs/*.log
+!.gitkeep
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Local runtime DB can be regenerated; keep schema via scripts
+# Uncomment next line if you prefer not to ship the SQLite file:
+# hohhot_pm25.db
